@@ -1,0 +1,638 @@
+
+/* Video de fondo */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Envía el video al fondo */
+    overflow: hidden;
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+body {
+    font-family: 'Playwrite CU', cursive;
+    background-color: #646464;
+    color: #333;
+    line-height: 1.6;
+    position: relative; /* Esto asegura que el contenido esté sobre el video */
+}
+
+/* Contenido principal */
+.content {
+    position: relative;
+    z-index: 1; /* Coloca el contenido sobre el video */
+    padding: 20px;
+}
+
+/* Imagen de respaldo */
+.video-background {
+    background-image: url('imagenes/fondo.png'); /* Imagen de respaldo */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* Estilos del perfil */
+#profile {
+    background-color: #8686ff;
+    opacity: 0.89;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(81, 71, 138, 0.2);
+}
+
+img {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+h1, h2, h3, h4 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Contenedor del Header */
+header {
+    position: relative;
+    background: linear-gradient(135deg, #1a1a1a, #3d3d3d); /* Color base oscuro */
+    color: white;
+    padding: 10px 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex; /* Usamos Flexbox para alinear los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+    justify-content: space-between; /* Espacio entre el logo y los enlaces */
+}
+.logo img {
+    width: 100px; /* Ajusta el tamaño según sea necesario */
+    height: 100px; /* Mantén la altura igual al ancho para que sea cuadrado */
+    object-fit: cover; /* Asegura que la imagen se ajuste bien dentro del contenedor */
+    border-radius: 20%; /* Si deseas que el logo tenga bordes redondeados, si no lo deseas, puedes omitir esta línea */
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #ffe53b;
+}
+/*para proyectos.php*/
+#proyectos {
+    background-color: #9cdcfc;
+    opacity: 0.89;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(81, 71, 138, 0.2);
+}
+/*blog.php*/
+#blog {
+    background-color: #f1c7f5;
+    opacity: 0.89;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(81, 71, 138, 0.2);
+}
+/* Para pantallas pequeñas */
+@media (max-width: 500px) {
+    header {
+        flex-direction: column; /* Cambia la dirección del flex para apilar elementos verticalmente */
+        align-items: flex-start; /* Alinea los elementos a la izquierda */
+    }
+
+    header .logo {
+        margin-bottom: 10px; /* Espacio entre el logo y los enlaces en móviles */
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%; /* Asegura que los enlaces ocupen todo el ancho disponible */
+    }
+
+    header nav ul li {
+        margin-bottom: 10px;
+    }
+}
+
+/* Cuadro de registro bonito */
+section#registrarse {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+form input[type="text"], 
+form input[type="email"], 
+form input[type="password"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+form input[type="submit"] {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Formulario de iniciar sesión */
+#iniciar_sesion {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f4f4f4;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#iniciar_sesion h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+#iniciar_sesion form {
+    display: flex;
+    flex-direction: column;
+}
+
+#iniciar_sesion label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#iniciar_sesion input[type="email"],
+#iniciar_sesion input[type="password"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#iniciar_sesion input[type="submit"] {
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#iniciar_sesion input[type="submit"]:hover {
+    background-color: #218838;
+}
+/*contactos.php*/
+
+#contacto {
+    max-width: 400px; /* Ancho máximo del cuadro */
+    margin: 40px auto; /* Centrado vertical y horizontal */
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center; /* Centra el texto */
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333; /* Color del título */
+}
+
+.form-container {
+    padding: 20px; /* Espacio interno */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"], 
+input[type="email"], 
+textarea {
+    width: 100%; /* Toma todo el ancho del cuadro */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+textarea {
+    resize: none; /* Evita que el área de texto se redimensione */
+}
+
+.btn-enviar {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Color azul */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+.btn-enviar:hover {
+    background-color: #0056b3; /* Tono más oscuro al pasar el mouse */
+}
+
+
+
+/* Mapa */
+#mapa {
+    text-align: center; /* Centra el contenido */
+    margin-top: 20px;
+}
+
+#mapa iframe {
+    width: 100%; /* El mapa ocupa el 100% del contenedor */
+    max-width: 600px; /* Limita el ancho máximo */
+    height: 450px; /* Altura del mapa */
+    border: 0; /* Sin borde */
+}
+
+/* Footer */
+footer {
+    background-color: #223142;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+footer .social-icons {
+    margin-top: 10px;
+}
+
+footer .social-icons a {
+    margin: 0 10px;
+}
+
+footer .social-icons img {
+    width: 24px;
+    height: 24px;
+}
+
+/*juego.php*/
+/* Estilos para la sección de juegos */
+#juegos {
+    padding: 20px;
+    text-align: center;
+}
+
+#juegos h2 {
+    margin-bottom: 20px;
+    color: #1a531b; /* Verde oscuro para el título */
+}
+
+/* Formulario de búsqueda */
+.search-form {
+    margin-bottom: 20px;
+}
+
+.search-form input[type="text"] {
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-form button {
+    padding: 10px 15px;
+    background-color: #1a531b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.search-form button:hover {
+    background-color: #145d14;
+}
+
+.game-link {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Verde suave */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.game-link:hover {
+    background-color: #45a049; /* Verde más oscuro al hacer hover */
+}
+.games-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.games-container h2 {
+    color: #2E8B57; /* Verde oscuro */
+    font-family: 'Arial', sans-serif;
+    font-size: 2rem;
+}
+
+.game {
+    display: inline-block;
+    width: 150px;
+    padding: 20px;
+    margin: 10px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.game-area {
+    margin: 0 auto;
+    display: block;
+    background-color: #000;
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+}
+
+/* Contenedor de juegos */
+.juegos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Tarjeta de juego */
+.juego-card {
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    background-color: white;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.juego-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.juego-card h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.juego-card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.juego-card .btn-jugar {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745; /* Verde para el botón */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.juego-card .btn-jugar:hover {
+    background-color: #218838;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .juego-card {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+
+
+
+/* Sección del Juego Snake */
+#snake-game {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    margin: 0 auto;
+    display: block;
+    background-color: #000;
+}
+#snake-game {
+    z-index: 10; /* Asegúrate de que el z-index sea mayor que el de otros elementos */
+    position: relative; /* o absolute dependiendo del caso */
+}
+canvas {
+    display: block;
+    margin: 20px auto;
+    border: 2px solid #007bff;
+    background-color: #f4f4f4;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Tabla de Ranking */
+table {
+    width: 80%;
+    margin: 40px auto;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table thead {
+    background-color: #007bff;
+    color: white;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+table tr:nth-child(even) {
+    background-color: #f4f4f4;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+}
+
+.btn-descargar-cv {
+    background-color: #4CAF50; /* Color verde */
+    color: white; /* Texto blanco */
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+}
+
+.btn-descargar-cv:hover {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+}
+
+.acortador-enlaces {
+    margin-top: 20px;
+}
+
+.acortador-enlaces form {
+    margin-bottom: 20px;
+}
+
+.acortador-enlaces input[type="url"] {
+    padding: 10px;
+    width: 80%;
+    margin-right: 10px;
+}
+
+.acortador-enlaces button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.acortador-enlaces button:hover {
+    background-color: #45a049;
+}
+.calculadora {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+#articulo {
+    background-color: #ddf2fc;
+    opacity: 0.89;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(81, 71, 138, 0.2);
+}
+
+
+.article h2 {
+    color: #333;
+}
+.articulo img {
+    max-width: 80%;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+#comentarios {
+    background-color: #f5ff8a;
+    opacity: 0.89;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(81, 71, 138, 0.2);
+}

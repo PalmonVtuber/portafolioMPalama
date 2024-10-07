@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <?php include('header.php'); ?>
+    <h1>Juego Snake</h1>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <p>Puntaje: <span id="score">0</span></p>
+    <p><a href="ranking.php">Ver Ranking</a></p>
+    <?php include('footer.php'); ?>
+    <script src="snake.js"></script>
+</body>
+<!-- Botón de regreso al menú de juegos -->
+<div style="text-align: center; margin-top: 20px;">
+    <a href="juegos.php" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Volver al Menú de Juegos</a>
+</div>
+
+</html>
+

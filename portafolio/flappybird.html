@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #70c5ce; /* Color de fondo */
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background: url('imagenes/flappybird/background.png') repeat-x;
+            background-size: cover;
+        }
+        .container {
+            position: relative;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <canvas id="gameCanvas" width="400" height="600"></canvas>
+    </div>
+
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+
+        // Cargar imágenes
+        const bird = new Image();
+        const background = new Image();
+        const pipeNorth = new Image();
+        const pipeSouth = new Image();
+        const baseImage = new Image();
+
+        bird.src = 'imagenes/flappybird/bird.png';
+        background.src = 'imagenes/flappybird/background.png';
+        pipeNorth.src = 'imagenes/flappybird/pipe.png';
+        pipeSouth.src = 'imagenes/flappybird/pipe.png'; // Será rotada
+        baseImage.src = 'imagenes/flappybird/base.png';
+
+        // Cargar sonidos (opcional)
+        // const flySound = new Audio('../imagenes/flappybird/fly.mp3');
+        // const scoreSound = new Audio('../imagenes/flappybird/score.mp3');
+
+        // Variables del juego
+        let gap = 85;
+        let constant;
+
+        let bX = 10;
+        let bY = 150;
+
+        let gravity = 1.5;
+
+        let score = 0;
+
+        // Array de tubos
+        let pipe = [];
+
+        pipe[0] = {
+            x: canvas.width,
+            y: 0
+        };
+
+        // Evento para hacer volar al pájaro
+        document.addEventListener("keydown", moveUp);
+        document.addEventListener("touchstart", moveUp); // Soporte táctil
+
+        function moveUp() {
+            // flySound.play();
+            bY -= 25;
+        }
+
+        // Dibujar el juego
+        function draw() {
+            ctx.drawImage(background, 0, 0);
+
+            for(let i = 0; i < pipe.length; i++) {
+                constant = pipeNorth.height + gap;
+                ctx.drawImage(pipeNorth, pipe[i].x, pipe[i].y);
+                ctx.save();
+                ctx.scale(-1, 1); // Voltear el tubo
+                ctx.drawImage(pipeSouth, -pipe[i].x - pipeSouth.width, pipe[i].y + constant);
+                ctx.restore();
+
+                pipe[i].x--;
+
+                if(pipe[i].x == 125){
+                    pipe.push({
+                        x: canvas.width,
+                        y: Math.floor(Math.random() * pipeNorth.height) - pipeNorth.height
+                    });
+                }
+
+                // Detección de colisiones
+                if( bX + bird.width >= pipe[i].x && bX <= pipe[i].x + pipeNorth.width
+                    && (bY <= pipe[i].y + pipeNorth.height || bY + bird.height >= pipe[i].y + constant)
+                    || bY + bird.height >= canvas.height - baseImage.height){
+                    location.reload(); // Reiniciar el juego
+                }
+
+                if(pipe[i].x == 5){
+                    score++;
+                    // scoreSound.play();
+                }
+            }
+
+            ctx.drawImage(baseImage, 0, canvas.height - baseImage.height);
+            ctx.drawImage(bird, bX, bY);
+
+            bY += gravity;
+
+            ctx.fillStyle = "#000";
+            ctx.font = "20px Arial";
+            ctx.fillText("Score : "+score, 10, canvas.height - 20);
+
+            requestAnimationFrame(draw);
+        }
+
+        bird.onload = draw;
+    </script>
+    <!-- Botón de regreso al menú de juegos -->
+<div style="text-align: center; margin-top: 20px;">
+    <a href="juegos.php" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Volver al Menú de Juegos</a>
+</div>
+</body>
+</html>
+
+

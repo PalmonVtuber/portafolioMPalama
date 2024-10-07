@@ -1,0 +1,122 @@
+CREATE DATABASE portafolio_juegos;
+USE portafolio_juegos;
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50),
+    email VARCHAR(100) UNIQUE,
+    password VARCHAR(255)
+);
+
+CREATE TABLE juegos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    descripcion TEXT,
+    url VARCHAR(255),
+    fecha_agregado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE conexiones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT,
+    juego_id INT,
+    ultima_conexion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+    FOREIGN KEY (juego_id) REFERENCES juegos(id)
+);
+
+CREATE TABLE progreso (
+    usuario_id INT,
+    juego_id INT,
+    progreso TEXT,
+    puntaje INT,
+    PRIMARY KEY (usuario_id, juego_id),
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+    FOREIGN KEY (juego_id) REFERENCES juegos(id)
+);
+CREATE TABLE puntajes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT,
+    puntaje INT,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+INSERT INTO usuarios (nombre, email, password) 
+VALUES ('Usuario Prueba', 'prueba@example.com', '12345');
+
+INSERT INTO juegos (nombre, descripcion, url) 
+VALUES ('Snake', 'Clásico juego de Snake donde controlas una serpiente que crece al comer.', 'snake.html');
+
+INSERT INTO juegos (nombre, descripcion, url)
+VALUES ('Flappy Bird', 'Un juego donde controlas a un pájaro para evitar obstáculos.', 'flappybird.html');
+
+CREATE TABLE rankings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    juego_id INT NOT NULL,
+    puntaje INT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+    FOREIGN KEY (juego_id) REFERENCES juegos(id)
+);
+CREATE TABLE enlaces (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    enlace_original TEXT NOT NULL,
+    enlace_acortado VARCHAR(10) NOT NULL,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE articulos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    contenido TEXT NOT NULL,
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    autor_id INT,
+    FOREIGN KEY (autor_id) REFERENCES usuarios(id)
+);
+CREATE TABLE comentarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    articulo_id INT,
+    usuario_id INT,
+    comentario TEXT NOT NULL,
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (articulo_id) REFERENCES articulos(id),
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+
+----------------------------------------------------------------------------------------------------------------------
+INSERT INTO articulos (titulo, contenido, fecha) VALUES 
+('Creación de un juego tipo Flappy Bird en JavaScript', 
+'<h2>Creación de un juego tipo Flappy Bird en JavaScript</h2><p>El desarrollo de videojuegos...</p><h3>Paso 1: Estructura básica del HTML</h3><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Flappy Bird con JavaScript&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;canvas id="gameCanvas" width="320" height="480"&gt;&lt;/canvas&gt;
+    &lt;script src="flappyBird.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h3>Paso 2: Estilizando el juego...</h3>', 
+NOW());
+***********************************************************************************************************
+INSERT INTO articulos (titulo, contenido, fecha) VALUES 
+('Creación de un juego tipo Flappy Bird en JavaScript' <img id="logoimg" src="imagenes/flappybird/flappybirdhada.png" alt="Logo">, 
+'<h2>Creación de un juego tipo Flappy Bird en JavaScript</h2>
+<h3>Introducción</h3>
+<h4>El desarrollo de videojuegos es una excelente manera de mejorar tus habilidades de programación mientras te diviertes. En este artículo, te guiaré a través del proceso de creación de un juego tipo Flappy Bird utilizando HTML5, CSS y JavaScript. Este juego será simple pero funcional, e incluirá características como la detección de colisiones, un sistema de puntuación y la lógica básica de movimiento.</h4>
+
+<h3>Requisitos</h3>
+<h4>Para seguir este tutorial, necesitarás conocimientos básicos de:</h4>
+
+<p>HTML para la estructura del juego.</p>
+<p>CSS para el diseño y estilo.</p>
+<p>JavaScript para la lógica del juego.</p>
+<h2>Paso 1: Estructura básica del HTML</h2>
+<h3>Empezaremos por crear la estructura básica del juego en HTML.</h3>
+<h4> El juego tendrá un canvas donde se dibujará todo, y lo controlaremos con JavaScript.</h4>'NOW());
+---------------------------------------------------------------------------------------------------------------------------
+
+
+
